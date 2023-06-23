@@ -48,12 +48,10 @@ class UserController extends Controller
         }
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request, User $user)
     {
         try {
             DB::beginTransaction();
-
-            $user = User::findOrFail($id);
             $user = $this->userService->updateUser($user, $request->validated());
 
             DB::commit();

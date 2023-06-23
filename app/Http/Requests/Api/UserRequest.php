@@ -37,7 +37,7 @@ class UserRequest extends FormRequest
 
     private function update(){
         return [
-            'mobile' => ['required','min:8','max:40','unique:users,mobile,' . $this->route('user'),new MobileNumber],
+            'mobile' => ['required','min:8','max:40','unique:users,mobile,' . $this->route('user')->id,new MobileNumber],
             'password' => ['sometimes','string' ,'min:8' ,'max:150'],
             'username' => ['required','string' ,'min:3' ,'max:150'],
         ];
